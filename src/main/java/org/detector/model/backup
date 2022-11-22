@@ -1,0 +1,4 @@
+//    private List<String> importList; // I am thinking whether I should keep this poriton or simply just ignore them
+//    private Map<Object,String> globalVariableList;
+//    private Map<FunctionInfo,String> localVariableList; // format :: code block(func/method) -> variable type,
+//    // variable_name
