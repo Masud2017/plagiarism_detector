@@ -63,4 +63,12 @@ public class Util {
         LanguageSyntax languageSyntax = gson.fromJson(jsonStr,LanguageSyntax.class);
         return languageSyntax;
     }
+
+    public static String removeTheWord(String sentence,String word) {
+        if (sentence.contains(word)) {
+            return sentence.replaceAll(word,"").replaceAll("\\s\\s"," ");
+
+        }
+        return null;
+    }
 }

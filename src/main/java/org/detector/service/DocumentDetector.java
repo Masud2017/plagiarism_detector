@@ -1,47 +1,35 @@
 package org.detector.service;
 
-import lombok.NoArgsConstructor;
 import org.detector.exception.EmptyLineListException;
 import org.detector.model.ProcessableDoc;
 import org.detector.model.SyntaxFormat;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
 
-@NoArgsConstructor
 public class DocumentDetector {
-    private List<String> lineList;
+    private List<String> lineListFirstFile;
+    private List<String> lineListSecondFile;
+    private Iterator<String> iteratorFirstFile;
+    private Iterator<String> iteratorSecondFile;
+
     private SyntaxFormat syntaxFormat;
-    public DocumentDetector(List<String> lineList,SyntaxFormat syntaxFormat) {
-        this.lineList = lineList;
+    public DocumentDetector(List<String> lineListFirstFile,List<String> lineListSecondFile,SyntaxFormat syntaxFormat) {
+        this.lineListFirstFile = lineListFirstFile;
+        this.lineListSecondFile = lineListSecondFile;
         this.syntaxFormat = syntaxFormat;
     }
 
-    public DocumentDetector(File file, SyntaxFormat syntaxFormat) throws FileNotFoundException {
-        Scanner scanner = new Scanner(file);
+    public DocumentDetector init() throws EmptyLineListException {
+        DocumentProcessor documentProcessorFirstFile = DocumentProcessorFactory.getDocumentProcessor(this.lineListFirstFile,this.syntaxFormat);
+        DocumentProcessor documentProcessorSecondFile = DocumentProcessorFactory.getDocumentProcessor(this.lineListSecondFile,this.syntaxFormat);
 
-        this.syntaxFormat = syntaxFormat;
-        this.lineList = new ArrayList<>();
+        ProcessableDoc processableDocFirstFile = documentProcessorFirstFile.getProcessedLineList();
+        ProcessableDoc processableDocSecondFile = documentProcessorSecondFile.getProcessedLineList();
 
-        while(scanner.hasNext()) {
-            this.lineList.add(scanner.nextLine());
-        }
-    }
+        this.iteratorFirstFile = processableDocFirstFile.getLineList().iterator();
+        this.iteratorSecondFile = processableDocSecondFile.getLineList().iterator();
 
-    public Integer detect() throws EmptyLineListException {
-        DocumentProcessor documentProcessor = DocumentProcessorFactory.getDocumentProcessor(this.lineList,this.syntaxFormat);
-        if (documentProcessor == null) {
-            return 0;
-        }
-        ProcessableDoc processableDoc = documentProcessor.getProcessedLineList();
-
-        Iterator<String> iter = processableDoc.getLineList().iterator();
-
-
-        return 0;
+        return this;
     }
 }

@@ -1,6 +1,5 @@
 package org.detector.service;
 
-import org.detector.model.SyntaxFormat;
 import org.detector.util.Util;
 
 import java.io.FileNotFoundException;
@@ -16,6 +15,8 @@ public class Detector {
 
         SyntaxAnalyzer syntaxAnalyzerFirstFile = new SyntaxAnalyzer(documentReaderFirstFile, Util.getSyntaxStructureList());
         SyntaxAnalyzer syntaxAnalyzerSecondFile = new SyntaxAnalyzer(documentReaderSecondFile, Util.getSyntaxStructureList());
+
+//        DocumentDetector documentDetector = new DocumentDetector();
 
 
 

@@ -61,4 +61,13 @@ public class TestUtil {
         Assert.assertEquals(expectedLanguageSyntax.getImportKeyword(),actualLanguageSyntax.getImportKeyword());
 
     }
+
+    @Test
+    public void testRemoveTheWord() {
+        String given = "Hello world this is a test text";
+        String expected = "Hello world this is a text";
+        String actual = Util.removeTheWord(given,"test");
+
+        Assert.assertEquals(expected,actual);
+    }
 }

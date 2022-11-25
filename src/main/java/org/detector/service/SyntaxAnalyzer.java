@@ -33,7 +33,7 @@ public class SyntaxAnalyzer {
         return extensionLanguageSyntaxMapper;
     }
 
-    public boolean cleanUpTheDoc () throws FileNotFoundException {
+    public SyntaxAnalyzer cleanUpTheDoc () throws FileNotFoundException {
         Map<SyntaxFormat,LanguageSyntax> extensionLanguageSyntaxMapper = this.getExtensionLanguageSyntaxMapper();
         List<String> lineList = this.documentReader.scan().getLineList();
 
@@ -44,7 +44,7 @@ public class SyntaxAnalyzer {
 
             }
         }
-        return true;
+        return this;
     }
 
     public SyntaxFormat analyzeSyntax() {
