@@ -18,15 +18,14 @@ import java.util.Scanner;
 @NoArgsConstructor
 public class Lexer {
     private Scanner scanner;
-    private List<String> scannedDoc;
+
     @Getter
-    private List<Token> tokenList;
+    private List<String> scannedDoc;
 
     public Lexer(String fileName) throws FileNotFoundException {
         File file = new File(fileName);
         this.scanner = new Scanner(new FileInputStream(file));
         this.scannedDoc = new ArrayList<>();
-        this.tokenList = new ArrayList<>();
     }
 
     public Lexer scan() {
