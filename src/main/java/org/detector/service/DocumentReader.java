@@ -13,7 +13,6 @@ import java.util.Scanner;
  * <h1>Lexer</h1>
  * This class analyses the lexemes of the code/doc.
  * */
-@NoArgsConstructor
 public class DocumentReader {
     private Scanner scanner;
 

@@ -1,19 +1,17 @@
 package org.detector.service;
 
-import org.detector.model.DocType;
+import org.detector.model.SyntaxFormat;
 
 import java.util.List;
 
 public class DocumentProcessorFactory {
     private DocumentProcessorFactory() {}
 
-    public static DocumentProcessor getDocumentProcessor(List<String> lineList, DocType docType) {
-        if (docType == DocType.DOCUMENT) {
+    public static DocumentProcessor getDocumentProcessor(List<String> lineList, SyntaxFormat syntaxFormat) {
+        if (syntaxFormat == SyntaxFormat.NONE) {
             return new TextDocumentProcessor(lineList);
-        } else if (docType == DocType.LANGUAGE) {
+        } else {
             return new LanguageDocumentProcessor(lineList);
         }
-
-        return null;
     }
 }

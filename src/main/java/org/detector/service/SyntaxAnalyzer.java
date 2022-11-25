@@ -22,4 +22,9 @@ public class SyntaxAnalyzer {
         }
     }
 
+    public SyntaxFormat analyzeSyntax() {
+
+        return SyntaxFormat.NONE;
+    }
+
 }

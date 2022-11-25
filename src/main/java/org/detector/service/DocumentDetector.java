@@ -2,8 +2,8 @@ package org.detector.service;
 
 import lombok.NoArgsConstructor;
 import org.detector.exception.EmptyLineListException;
-import org.detector.model.DocType;
 import org.detector.model.ProcessableDoc;
+import org.detector.model.SyntaxFormat;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,17 +15,16 @@ import java.util.Scanner;
 @NoArgsConstructor
 public class DocumentDetector {
     private List<String> lineList;
-    private DocType docType;
-
-    public DocumentDetector(List<String> lineList,DocType docType) {
+    private SyntaxFormat syntaxFormat;
+    public DocumentDetector(List<String> lineList,SyntaxFormat syntaxFormat) {
         this.lineList = lineList;
-        this.docType = docType;
+        this.syntaxFormat = syntaxFormat;
     }
 
-    public DocumentDetector(File file,DocType docType) throws FileNotFoundException {
+    public DocumentDetector(File file, SyntaxFormat syntaxFormat) throws FileNotFoundException {
         Scanner scanner = new Scanner(file);
 
-        this.docType = docType;
+        this.syntaxFormat = syntaxFormat;
         this.lineList = new ArrayList<>();
 
         while(scanner.hasNext()) {
@@ -34,7 +33,7 @@ public class DocumentDetector {
     }
 
     public Integer detect() throws EmptyLineListException {
-        DocumentProcessor documentProcessor = DocumentProcessorFactory.getDocumentProcessor(this.lineList,this.docType);
+        DocumentProcessor documentProcessor = DocumentProcessorFactory.getDocumentProcessor(this.lineList,this.syntaxFormat);
         if (documentProcessor == null) {
             return 0;
         }

@@ -5,18 +5,19 @@ import org.detector.model.SyntaxFormat;
 import org.detector.util.Util;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 
 @NoArgsConstructor
 public class LanguageDetector {
-    private SyntaxAnalyzer syntaxAnalyzer;
+    private SyntaxAnalyzer syntaxAnalyzerFirstFile;
+    private SyntaxAnalyzer syntaxAnalyzerSecondFile;
 
-    public LanguageDetector(String fileName) throws FileNotFoundException {
-        DocumentReader documentReader = new DocumentReader(fileName);
-        this.syntaxAnalyzer = new SyntaxAnalyzer(documentReader, Util.getSyntaxStructureList());
+    public LanguageDetector(DocumentReader documentReaderFirstFile,DocumentReader documentReaderSecondFile) throws FileNotFoundException {
+        this.syntaxAnalyzerFirstFile = new SyntaxAnalyzer(documentReaderFirstFile, Util.getSyntaxStructureList());
+        this.syntaxAnalyzerSecondFile = new SyntaxAnalyzer(documentReaderSecondFile, Util.getSyntaxStructureList());
     }
 
     public SyntaxFormat detectLanguage() {
         return SyntaxFormat.NONE;
     }
-
 }

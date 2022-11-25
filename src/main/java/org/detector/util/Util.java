@@ -1,12 +1,16 @@
 package org.detector.util;
 
 import com.google.common.io.Resources;
+import com.google.gson.Gson;
+import org.detector.model.LanguageSyntax;
 import org.detector.model.SyntaxFormat;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Util {
     public static SyntaxFormat getLanguageExtension(File file) {
@@ -41,5 +45,22 @@ public class Util {
             }
         }
         return fileList;
+    }
+
+    public static String readFileContent(File file) throws FileNotFoundException {
+        Scanner scanner = new Scanner(file);
+        String content = "";
+
+        while (scanner.hasNext()) {
+            content += scanner.nextLine();
+        }
+
+        return content.trim().replaceAll("\\s", "");
+    }
+
+    public static LanguageSyntax serializeJsonContent(String jsonStr) {
+        Gson gson = new Gson();
+        LanguageSyntax languageSyntax = gson.fromJson(jsonStr,LanguageSyntax.class);
+        return languageSyntax;
     }
 }
