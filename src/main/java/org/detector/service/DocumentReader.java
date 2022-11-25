@@ -25,7 +25,7 @@ public class DocumentReader {
         this.lineList = new ArrayList<>();
     }
 
-    public void scan() {
+    public DocumentReader scan() {
         try {
             while(this.scanner.hasNext()) {
                 this.lineList.add(this.scanner.nextLine());
@@ -33,5 +33,6 @@ public class DocumentReader {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return this;
     }
 }
