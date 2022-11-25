@@ -24,7 +24,9 @@ public class DocumentDetector {
 
     public DocumentDetector(File file,DocType docType) throws FileNotFoundException {
         Scanner scanner = new Scanner(file);
+
         this.docType = docType;
+        this.lineList = new ArrayList<>();
 
         while(scanner.hasNext()) {
             this.lineList.add(scanner.nextLine());
@@ -33,14 +35,13 @@ public class DocumentDetector {
 
     public Integer detect() throws EmptyLineListException {
         DocumentProcessor documentProcessor = DocumentProcessorFactory.getDocumentProcessor(this.lineList,this.docType);
-        ProcessableDoc processableDoc = documentProcessor.getProcessedLineList(); // return either sentenceList or line
-        // List
-
-        Iterator itter = processableDoc.getLineList().iterator();
-
-        while(itter.hasNext()) {
-
+        if (documentProcessor == null) {
+            return 0;
         }
+        ProcessableDoc processableDoc = documentProcessor.getProcessedLineList();
+
+        Iterator<String> iter = processableDoc.getLineList().iterator();
+
 
         return 0;
     }

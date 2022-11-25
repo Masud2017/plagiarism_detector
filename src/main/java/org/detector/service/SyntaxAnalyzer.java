@@ -9,12 +9,12 @@ import java.util.Scanner;
 
 public class SyntaxAnalyzer {
     List<File> syntaxFileList;
-    private Lexer lexer;
+    private DocumentReader documentReader;
     private List<Scanner> scannerList;
     private SyntaxFormat syntaxFormat;
 
-    public SyntaxAnalyzer(Lexer lexer,List<File> syntaxFileList) throws FileNotFoundException {
-        this.lexer = lexer;
+    public SyntaxAnalyzer(DocumentReader documentReader, List<File> syntaxFileList) throws FileNotFoundException {
+        this.documentReader = documentReader;
         this.syntaxFileList = syntaxFileList;
 
         for(File fileItem : this.syntaxFileList) {

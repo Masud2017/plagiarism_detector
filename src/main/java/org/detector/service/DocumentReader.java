@@ -14,27 +14,25 @@ import java.util.Scanner;
  * This class analyses the lexemes of the code/doc.
  * */
 @NoArgsConstructor
-public class Lexer {
+public class DocumentReader {
     private Scanner scanner;
 
     @Getter
-    private List<String> scannedDoc;
+    private List<String> lineList;
 
-    public Lexer(String fileName) throws FileNotFoundException {
+    public DocumentReader(String fileName) throws FileNotFoundException {
         File file = new File(fileName);
         this.scanner = new Scanner(new FileInputStream(file));
-        this.scannedDoc = new ArrayList<>();
+        this.lineList = new ArrayList<>();
     }
 
-    public Lexer scan() {
+    public void scan() {
         try {
             while(this.scanner.hasNext()) {
-                this.scannedDoc.add(this.scanner.nextLine());
+                this.lineList.add(this.scanner.nextLine());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
         }
-        return this;
     }
 }
