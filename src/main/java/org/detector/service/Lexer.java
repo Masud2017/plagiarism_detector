@@ -40,30 +40,4 @@ public class Lexer {
         }
         return this;
     }
-
-    /**
-     * This method cleanup all the comments from the code.
-     * Remove all the white spaces and then convert them to special structure.
-     * */
-    public Lexer cleanUp() {
-        //optional for now
-        return this;
-    }
-
-    public Lexer tokenize() {
-        for(String line : scannedDoc) {
-            String[] lineArr = line.split(" "); // splitting the words based on spaces
-            Token tempToken = new Token();
-            List<String> spaceSepratedStringList = new ArrayList<>();
-
-            for (String lineItem : lineArr) {
-                spaceSepratedStringList.add(lineItem);
-            }
-
-            tempToken.setWordListSeparatedBySpace(spaceSepratedStringList);
-
-            this.tokenList.add(tempToken);
-        }
-        return this;
-    }
 }
