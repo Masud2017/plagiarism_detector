@@ -2,8 +2,6 @@ package org.detector.service;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.detector.model.Token;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
