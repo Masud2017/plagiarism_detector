@@ -4,6 +4,7 @@ import org.detector.exception.EmptyLineListException;
 import org.detector.model.ProcessableDoc;
 import org.detector.model.SyntaxFormat;
 
+import javax.annotation.Syntax;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,16 +14,18 @@ public class DocumentDetector {
     private Iterator<String> iteratorFirstFile;
     private Iterator<String> iteratorSecondFile;
 
-    private SyntaxFormat syntaxFormat;
-    public DocumentDetector(List<String> lineListFirstFile,List<String> lineListSecondFile,SyntaxFormat syntaxFormat) {
+    private SyntaxFormat syntaxFormatFirstFile;
+    private SyntaxFormat syntaxFormatSecondFile;
+    public DocumentDetector(List<String> lineListFirstFile, List<String> lineListSecondFile, SyntaxFormat syntaxFormatFirstFile, SyntaxFormat syntaxFormatSecondFile) {
         this.lineListFirstFile = lineListFirstFile;
         this.lineListSecondFile = lineListSecondFile;
-        this.syntaxFormat = syntaxFormat;
+        this.syntaxFormatFirstFile = syntaxFormatFirstFile;
+        this.syntaxFormatSecondFile = syntaxFormatSecondFile;
     }
 
     public DocumentDetector init() throws EmptyLineListException {
-        DocumentProcessor documentProcessorFirstFile = DocumentProcessorFactory.getDocumentProcessor(this.lineListFirstFile,this.syntaxFormat);
-        DocumentProcessor documentProcessorSecondFile = DocumentProcessorFactory.getDocumentProcessor(this.lineListSecondFile,this.syntaxFormat);
+        DocumentProcessor documentProcessorFirstFile = DocumentProcessorFactory.getDocumentProcessor(this.lineListFirstFile,this.syntaxFormatFirstFile);
+        DocumentProcessor documentProcessorSecondFile = DocumentProcessorFactory.getDocumentProcessor(this.lineListSecondFile,this.syntaxFormatSecondFile);
 
         ProcessableDoc processableDocFirstFile = documentProcessorFirstFile.getProcessedLineList();
         ProcessableDoc processableDocSecondFile = documentProcessorSecondFile.getProcessedLineList();
@@ -32,4 +35,15 @@ public class DocumentDetector {
 
         return this;
     }
+
+    public boolean detect() {
+        if (this.syntaxFormatFirstFile.equals(this.syntaxFormatSecondFile)) {
+
+        }
+        return false;
+    }
+
+
+
+
 }

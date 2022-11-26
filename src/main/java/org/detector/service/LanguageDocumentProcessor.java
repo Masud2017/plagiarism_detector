@@ -14,6 +14,7 @@ public class LanguageDocumentProcessor implements  DocumentProcessor {
 
     @Override
     public ProcessableDoc getProcessedLineList() throws EmptyLineListException {
+
         return null;
     }
 }

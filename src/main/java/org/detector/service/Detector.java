@@ -16,7 +16,10 @@ public class Detector {
         SyntaxAnalyzer syntaxAnalyzerFirstFile = new SyntaxAnalyzer(documentReaderFirstFile, Util.getSyntaxStructureList());
         SyntaxAnalyzer syntaxAnalyzerSecondFile = new SyntaxAnalyzer(documentReaderSecondFile, Util.getSyntaxStructureList());
 
-//        DocumentDetector documentDetector = new DocumentDetector();
+        DocumentDetector documentDetector = new DocumentDetector(syntaxAnalyzerFirstFile.getCleanedLineList()
+                                                ,syntaxAnalyzerSecondFile.getCleanedLineList()
+                                                ,syntaxAnalyzerFirstFile.analyzeSyntax()
+                                                ,syntaxAnalyzerSecondFile.analyzeSyntax());
 
 
 
