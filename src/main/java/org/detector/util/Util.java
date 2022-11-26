@@ -16,17 +16,29 @@ public class Util {
     public static SyntaxFormat getLanguageExtension(File file) {
         String ext = null;
         String s = file.getName();
-        int i = s.lastIndexOf('.');
-
-        if (i > 0 &&  i < s.length() - 1) {
-            ext = s.substring(i+1).toLowerCase();
+        if (s.length() > 0) {
+            ext = s.replaceAll(".json","");
         }
-
-        System.out.println("Extension of the program ; "+ext);
 
         switch (ext) {
             case "c":
                 return SyntaxFormat.C;
+            case "cpp":
+                return SyntaxFormat.CPP;
+            case "java":
+                return SyntaxFormat.JAVA;
+            case "js":
+                return SyntaxFormat.JS;
+            case "python":
+                return SyntaxFormat.PYTHON;
+            case "go":
+                return SyntaxFormat.GO;
+            case "php":
+                return SyntaxFormat.PHP;
+            case "kotlin":
+                return SyntaxFormat.KOTLIN;
+            case "haskell":
+                return SyntaxFormat.HASKELL;
             default:
                 return SyntaxFormat.NONE;
         }

@@ -1,6 +1,6 @@
 {
   "name" : "c",
-  "words": ["auto", "break", "case", "char", "const", "continue", "default", "do", "double", "else", "enum", "extern", "float", "for", "goto", "if", "int", "long", "register", "return", "short", "signed", "sizeof", "static", "struct", "switch", "typedef", "union", "unsigned", "void", "volatile", "while", "_Bool", "_Complex", "_Imaginary", "inline", "restrict", "_Alignas", "_Alignof", "_Atomic", "_Generic", "_Noreturn", "_Static_assert", "_Thread_local"],
+  "words": ["\\bauto\\b", "\\bbreak\\b", "\\bcase\\b", "\\bchar\\b", "\\bconst\\b", "\\bcontinue\\b", "\\bdefault\\b", "\\bdo\\b", "\\bdouble\\b", "\\belse\\b", "\\benum\\b", "\\bextern\\b", "\\bfloat\\b", "\\bfor\\b", "\\bgoto\\b", "\\bif\\b", "\\bint\\b", "\\blong\\b", "\\bregister\\b", "\\breturn\\b", "\\bshort\\b", "\\bsigned\\b", "\\bsizeof\\b", "\\bstatic\\b", "\\bstruct\\b", "\\bswitch\\b", "\\btypedef\\b", "\\bunion\\b", "\\bunsigned\\b", "\\bvoid\\b", "\\bvolatile\\b", "\\bwhile\\b", "_\\bBool\\b", "_\\bComplex\\b", "_\\bImaginary\\b", "\\binline\\b", "\\brestrict\\b", "_\\bAlignas\\b", "_\\bAlignof\\b", "_\\bAtomic\\b", "_\\bGeneric\\b", "_\\bNoreturn\\b", "_\\bStatic\\b_\\bassert\\b", "_\\bThread\\b_\\blocal\\b"],
   "operators": ["+", "-", "*", "/", "%", "=", "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<=", ">>=", "~", "&", "|", "^", "<<", ">>", "!", "&&", "||", "?any:", "==", "!=", "(",")", "++", "--", ".", "->", "sizeof", "<", "<=", ">", ">=", "&", "*", "[","]", ",", "(",")"],
-  "importKeyword" : "#include<*>"
+  "importKeyword" : "#include\\s?<\\s?.*\\s?>"
 }

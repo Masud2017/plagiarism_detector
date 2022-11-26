@@ -32,7 +32,7 @@ public class TestUtil {
 
     @Test
     public void testReadFileContent() throws FileNotFoundException {
-        String expected = "{\"name\":\"c\",\"words\":[\"auto\",\"break\",\"case\",\"char\",\"const\",\"continue\",\"default\",\"do\",\"double\",\"else\",\"enum\",\"extern\",\"float\",\"for\",\"goto\",\"if\",\"int\",\"long\",\"register\",\"return\",\"short\",\"signed\",\"sizeof\",\"static\",\"struct\",\"switch\",\"typedef\",\"union\",\"unsigned\",\"void\",\"volatile\",\"while\",\"_Bool\",\"_Complex\",\"_Imaginary\",\"inline\",\"restrict\",\"_Alignas\",\"_Alignof\",\"_Atomic\",\"_Generic\",\"_Noreturn\",\"_Static_assert\",\"_Thread_local\"],\"operators\":[\"+\",\"-\",\"*\",\"/\",\"%\",\"=\",\"+=\",\"-=\",\"*=\",\"/=\",\"%=\",\"&=\",\"|=\",\"^=\",\"<<=\",\">>=\",\"~\",\"&\",\"|\",\"^\",\"<<\",\">>\",\"!\",\"&&\",\"||\",\"?any:\",\"==\",\"!=\",\"(\",\")\",\"++\",\"--\",\".\",\"->\",\"sizeof\",\"<\",\"<=\",\">\",\">=\",\"&\",\"*\",\"[\",\"]\",\",\",\"(\",\")\"],\"importKeyword\":\"#include<*>\"}";
+        String expected = "{\"name\":\"c\",\"words\":[\"auto\",\"break\",\"case\",\"char\",\"const\",\"continue\",\"default\",\"do\",\"double\",\"else\",\"enum\",\"extern\",\"float\",\"for\",\"goto\",\"if\",\"int\",\"long\",\"register\",\"return\",\"short\",\"signed\",\"sizeof\",\"static\",\"struct\",\"switch\",\"typedef\",\"union\",\"unsigned\",\"void\",\"volatile\",\"while\",\"_Bool\",\"_Complex\",\"_Imaginary\",\"inline\",\"restrict\",\"_Alignas\",\"_Alignof\",\"_Atomic\",\"_Generic\",\"_Noreturn\",\"_Static_assert\",\"_Thread_local\"],\"operators\":[\"+\",\"-\",\"*\",\"/\",\"%\",\"=\",\"+=\",\"-=\",\"*=\",\"/=\",\"%=\",\"&=\",\"|=\",\"^=\",\"<<=\",\">>=\",\"~\",\"&\",\"|\",\"^\",\"<<\",\">>\",\"!\",\"&&\",\"||\",\"?any:\",\"==\",\"!=\",\"(\",\")\",\"++\",\"--\",\".\",\"->\",\"sizeof\",\"<\",\"<=\",\">\",\">=\",\"&\",\"*\",\"[\",\"]\",\",\",\"(\",\")\"],\"importKeyword\":\"#include\\\\s?<\\\\s?.*\\\\s?>\"}";
         File file = new File(Resources.getResource("syntax_structure/c.json").getPath());
         String actualData = Util.readFileContent(file);
 
@@ -51,7 +51,7 @@ public class TestUtil {
         expectedLanguageSyntax.setName("c");
         expectedLanguageSyntax.setWords(words);
         expectedLanguageSyntax.setOperators(operators);
-        expectedLanguageSyntax.setImportKeyword("#include<*>");
+        expectedLanguageSyntax.setImportKeyword("#include\\s?<\\s?.*\\s?>");
 
         LanguageSyntax actualLanguageSyntax = Util.serializeJsonContent(givenData);
 
